@@ -1,6 +1,9 @@
 import {useGetPostsQuery} from "../../app/apiSlice.js";
+import {useSelector} from "react-redux";
+import {selectPosts} from "./postsSlice.js";
 export default function PostsList({onOpenComments}) {
-  const {data: posts, error, isLoading} = useGetPostsQuery();
+  const {error, isLoading} = useGetPostsQuery();
+  const posts = useSelector(selectPosts);
 
   if (isLoading) return <p>Загрузка</p>
   if (error) return <i>Ошибка загрузки данных</i>
