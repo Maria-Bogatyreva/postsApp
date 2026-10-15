@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {useCreatePostMutation} from "../../app/apiSlice.js";
+import {useCreatePostMutation} from "../../store/api/postsApi.js";
 
 const initialValues = {
   title: "",

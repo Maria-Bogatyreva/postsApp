@@ -1,6 +1,6 @@
 import PostsList from "./features/posts/PostsList.jsx";
 import {useState} from "react";
-import CommentsList from "./features/posts/CommentsList.jsx";
+import CommentsList from "./features/comments/CommentsList.jsx";
 import AddPostForm from "./features/posts/AddPostForm.jsx";
 
 function App() {

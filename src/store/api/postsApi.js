@@ -1,9 +1,8 @@
-import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-import {addPost, setPosts} from "../features/posts/postsSlice.js";
+import api from './baseApi.js'
+import {addPost, setPosts} from "../../features/posts/postsSlice.js";
 
-export const apiSlice = createApi({
-  reducerPath: 'api',
-  baseQuery: fetchBaseQuery({baseUrl: 'https://jsonplaceholder.typicode.com/'}),
+
+const postsApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getPosts: builder.query({
       query: () => 'posts?_limit=5',
@@ -15,9 +14,6 @@ export const apiSlice = createApi({
           console.error(error)
         }
       }
-    }),
-    getCommentsById: builder.query({
-      query: (id) => `posts/${id}/comments`
     }),
     createPost: builder.mutation({
       query: (newPost) => ({
@@ -36,8 +32,9 @@ export const apiSlice = createApi({
       }
     })
   }),
+  overrideExisting: false
 })
 
-// экспорт хуков для использования в компонентах
+export const {useGetPostsQuery, useCreatePostMutation} = postsApi;
 
-export const {useGetPostsQuery, useGetCommentsByIdQuery, useCreatePostMutation} = apiSlice;
+export default postsApi;

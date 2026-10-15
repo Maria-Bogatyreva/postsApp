@@ -1,4 +1,4 @@
-import {useGetCommentsByIdQuery} from "../../app/apiSlice.js";
+import {useGetCommentsByIdQuery} from "../../store/api/commentsApi.js";
 
 export default function CommentsList({postId}) {
   const {currentData: comments, error, isFetching, isUninitialized} = useGetCommentsByIdQuery(postId, {skip: !postId})

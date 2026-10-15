@@ -1,6 +1,7 @@
-import {useGetPostsQuery} from "../../app/apiSlice.js";
+import {useGetPostsQuery} from "../../store/api/postsApi.js";
 import {useSelector} from "react-redux";
 import {selectPosts} from "./postsSlice.js";
+
 export default function PostsList({onOpenComments}) {
   const {error, isLoading} = useGetPostsQuery();
   const posts = useSelector(selectPosts);
